@@ -1,6 +1,6 @@
 PRG            = main.c
 OBJ            = main.o
-MCU_TARGET     = attiny85
+MCU_TARGET     = attiny13
 OPTIMIZE       = -O2
 
 # You should not have to change anything below here.
@@ -30,8 +30,7 @@ hex:  $(PRG).hex
 install: load
 
 load: $(PRG).hex
-	#avrdude -p t85 -c usbtiny -U lfuse:w:0xE2:m -U flash:w:$<
-	avrdude -P usb -p t85 -c dragon_hvsp -U lfuse:w:0xE2:m -U flash:w:$<
+	avrdude -P usb -p t13 -c dragon_hvsp -U flash:w:$<
 
 status:
-	avrdude -P usb -p t85 -c dragon_hvsp -v
+	avrdude -P usb -p t13 -c dragon_hvsp -v
